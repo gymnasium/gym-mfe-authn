@@ -12,11 +12,11 @@ import { messages as paragonMessages } from '@edx/paragon';
 
 import configuration from './config';
 import appMessages from './i18n';
-import MainApp from './MainApp';
+import GymApp from './GymApp';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <MainApp />,
+    <GymApp />,
     document.getElementById('root'),
   );
 });

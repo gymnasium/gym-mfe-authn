@@ -23,22 +23,23 @@ const BaseComponent = ({ children, showWelcomeBanner }) => {
   return (
     <>
       {getConfig().ENABLE_COOKIE_POLICY_BANNER ? <CookiePolicyBanner languageCode={getLocale()} /> : null}
-      <div className="col-md-12 extra-large-screen-top-stripe" />
-      <div className="layout">
-        <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
-          {authenticatedUser ? <AuthSmallLayout username={username} /> : <SmallLayout />}
-        </MediaQuery>
-        <MediaQuery minWidth={breakpoints.medium.minWidth} maxWidth={breakpoints.large.maxWidth - 1}>
-          {authenticatedUser ? <AuthMediumLayout username={username} /> : <MediumLayout />}
-        </MediaQuery>
-        <MediaQuery minWidth={breakpoints.extraLarge.minWidth} maxWidth={breakpoints.extraExtraLarge.maxWidth}>
-          {authenticatedUser ? <AuthLargeLayout username={username} /> : <LargeLayout />}
-        </MediaQuery>
+      <main id="main">
+        <div className="container">
+          <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
+            {authenticatedUser ? <AuthSmallLayout username={username} /> : <SmallLayout />}
+          </MediaQuery>
+          <MediaQuery minWidth={breakpoints.medium.minWidth} maxWidth={breakpoints.large.maxWidth - 1}>
+            {authenticatedUser ? <AuthMediumLayout username={username} /> : <MediumLayout />}
+          </MediaQuery>
+          <MediaQuery minWidth={breakpoints.extraLarge.minWidth} maxWidth={breakpoints.extraExtraLarge.maxWidth}>
+            {authenticatedUser ? <AuthLargeLayout username={username} /> : <LargeLayout />}
+          </MediaQuery>
 
-        <div className={classNames('content', { 'align-items-center mt-0': authenticatedUser })}>
-          {children}
+          <div className={classNames('content', { 'align-items-center mt-0': authenticatedUser })}>
+            {children}
+          </div>
         </div>
-      </div>
+      </main>
     </>
   );
 };
