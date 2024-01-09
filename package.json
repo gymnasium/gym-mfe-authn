@@ -32,7 +32,7 @@
     "url": "https://github.com/openedx/frontend-app-authn/issues"
   },
   "dependencies": {
-    "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
+    "@openedx/brand-openedx": "github:gymnasium/brand-openedx#gym.palm.4",
     "@edx/frontend-component-cookie-policy-banner": "2.2.2",
     "@edx/frontend-component-footer": "12.0.0",
     "@edx/frontend-component-header": "github:gymnasium/frontend-component-header#gym.palm.4",
