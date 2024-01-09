@@ -1,10 +1,10 @@
 {
   "name": "@edx/frontend-app-authn",
-  "version": "0.1.0",
-  "description": "Frontend application template",
+  "version": "1.0.0-gym.palm.4",
+  "description": "MFE for authentication",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openedx/frontend-app-authn.git"
+    "url": "git+https://github.com/gymnasium/frontend-app-authn.git"
   },
   "browserslist": [
     "extends @edx/browserslist-config"
