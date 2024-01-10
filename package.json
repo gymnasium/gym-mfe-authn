@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@openedx/brand-openedx": "github:gymnasium/brand-openedx#gym.palm.4",
-    "@edx/frontend-component-cookie-policy-banner": "2.2.2",
-    "@edx/frontend-component-footer": "12.0.0",
+    "@edx/frontend-component-cookie-policy-banner": "2.3.0",
+    "@edx/frontend-component-footer": "github:gymnasium/frontend-component-footer#gym.palm.4",
     "@edx/frontend-component-header": "github:gymnasium/frontend-component-header#gym.palm.4",
     "@edx/frontend-platform": "4.2.0",
     "@edx/paragon": "20.30.1",
@@ -77,8 +77,8 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "^1.1.1",
-    "@edx/frontend-build": "12.9.17",
+    "@edx/browserslist-config": "1.2.0",
+    "@edx/frontend-build": "npm:@openedx/frontend-build@13.0.24",
     "@edx/reactifex": "^2.1.1",
     "babel-plugin-formatjs": "10.4.0",
     "enzyme": "3.11.0",
