@@ -1,5 +1,5 @@
 // Load component based styles
-@import "_base_component.scss";
+// @import "_base_component.scss";
 @import "_registration.scss";
 @import "_recommendations_page.scss";
 //
@@ -44,13 +44,13 @@ $elevation-level-2-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
   min-width: 464px !important;
 }
 
-.stateful-button-width {
-  width: 12rem;
-}
+// .stateful-button-width {
+//   width: 12rem;
+// }
 
-.login-button-width {
-  min-width: 6rem;
-}
+// .login-button-width {
+//   min-width: 6rem;
+// }
 
 .tpa-skeleton {
   margin-bottom: 0.75rem;
