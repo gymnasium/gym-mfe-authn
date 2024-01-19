@@ -198,7 +198,7 @@ const ResetPasswordPage = (props) => {
                   name="submit-new-password"
                   type="submit"
                   variant="brand"
-                  className="stateful-button-width"
+                  className="buttom stateful-button-width"
                   state={props.status}
                   labels={{
                     default: formatMessage(messages['reset.password']),

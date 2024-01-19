@@ -42,7 +42,7 @@ const EnterpriseSSO = (props) => {
                 key={tpaProvider.id}
                 type="submit"
                 variant="link"
-                className={`btn-tpa btn-${tpaProvider.id}`}
+                className={`button btn-tpa btn-${tpaProvider.id}`}
                 onClick={(e) => handleSubmit(e, tpaProvider.loginUrl)}
               >
                 {tpaProvider.iconImage ? (
