@@ -4,8 +4,10 @@ import { getConfig } from '@edx/frontend-platform';
 import { AppProvider } from '@edx/frontend-platform/react';
 import { Helmet } from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
+import { GymHeader, messages as headerMessages } from '@edx/frontend-component-header';
 import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+// import { GymHeader, messages as headerMessages } from '../frontend-component-header/src';
+// import Footer, { messages as footerMessages } from '../frontend-component-footer/src';
 
 import {
   Logistration, NotFoundPage, registerIcons, UnAuthOnlyRoute,
@@ -39,22 +41,25 @@ const MainApp = () => (
       <link rel="shortcut icon" href={config.FAVICON_URL} type="image/x-icon" />
       <link rel="stylesheet" href={css} />
     </Helmet>
-    <Switch>
-      <Route exact path="/">
-        <Redirect to={updatePathWithQueryParams(REGISTER_PAGE)} />
-      </Route>
-      <UnAuthOnlyRoute exact path={LOGIN_PAGE} render={() => <Logistration selectedPage={LOGIN_PAGE} />} />
-      <UnAuthOnlyRoute exact path={REGISTER_PAGE} component={Logistration} />
-      <UnAuthOnlyRoute exact path={RESET_PAGE} component={ForgotPasswordPage} />
-      <Route exact path={PASSWORD_RESET_CONFIRM} component={ResetPasswordPage} />
-      <Route exact path={AUTHN_PROGRESSIVE_PROFILING} component={ProgressiveProfiling} />
-      <Route exact path={RECOMMENDATIONS} component={RecommendationsPage} />
-      <Route path={PAGE_NOT_FOUND} component={NotFoundPage} />
-      <Route path="*">
-        <Redirect to={PAGE_NOT_FOUND} />
-      </Route>
-    </Switch>
-    <Footer />
+    <>
+      <GymHeader secondaryNav={false} />
+      <Switch>
+        <Route exact path="/">
+          <Redirect to={updatePathWithQueryParams(REGISTER_PAGE)} />
+        </Route>
+        <UnAuthOnlyRoute exact path={LOGIN_PAGE} render={() => <Logistration selectedPage={LOGIN_PAGE} />} />
+        <UnAuthOnlyRoute exact path={REGISTER_PAGE} component={Logistration} />
+        <UnAuthOnlyRoute exact path={RESET_PAGE} component={ForgotPasswordPage} />
+        <Route exact path={PASSWORD_RESET_CONFIRM} component={ResetPasswordPage} />
+        <Route exact path={AUTHN_PROGRESSIVE_PROFILING} component={ProgressiveProfiling} />
+        <Route exact path={RECOMMENDATIONS} component={RecommendationsPage} />
+        <Route path={PAGE_NOT_FOUND} component={NotFoundPage} />
+        <Route path="*">
+          <Redirect to={PAGE_NOT_FOUND} />
+        </Route>
+      </Switch>
+      <Footer />
+    </>
   </AppProvider>
 );
 
