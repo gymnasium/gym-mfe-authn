@@ -1,6 +1,6 @@
 const path = require('path');
 const { createConfig } = require('@edx/frontend-build');
-const config = createConfig('webpack-dev');
+const config = createConfig('webpack-dev-tutor');
 
 config.cache = { type: 'filesystem' }; // This isn't needed but really speeds up rebuilds!
 
