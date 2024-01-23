@@ -3,11 +3,15 @@ const { createConfig } = require('@edx/frontend-build');
 
 const config = createConfig('webpack-dev');
 
+config.devServer.allowedHosts = [
+  'apps.local.overhang.io',
+];
+
 config.entry = {
   app: path.resolve(process.cwd(), './src/index'),
 };
 
-// config.module.rules[0].exclude = /node_modules\/(?!(fastest-levenshtein|@edx))/;
+config.module.rules[0].exclude = /node_modules\/(?!(fastest-levenshtein|@edx))/;
 
 config.output = {
   path: path.resolve(process.cwd(), './dist'),

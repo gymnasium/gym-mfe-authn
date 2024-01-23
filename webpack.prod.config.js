@@ -7,7 +7,7 @@ config.entry = {
   app: path.resolve(process.cwd(), './src/index'),
 };
 
-// config.module.rules[0].exclude = /node_modules\/(?!(fastest-levenshtein|@edx))/;
+config.module.rules[0].exclude = /node_modules\/(?!(fastest-levenshtein|@edx))/;
 
 config.output = {
   path: path.resolve(process.cwd(), './dist'),
