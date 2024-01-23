@@ -1,7 +1,7 @@
 const path = require('path');
 const { createConfig } = require('@edx/frontend-build');
 
-const config = createConfig('webpack-prod');
+const config = createConfig('webpack-dev');
 
 config.entry = {
   app: path.resolve(process.cwd(), './src/index'),
