@@ -16,7 +16,7 @@ export const RenderInstitutionButton = props => {
 
   return (
     <Button
-      className="btn-sm text-body p-0 mb-4 border-0"
+      className="button btn-sm text-body p-0 mb-4 border-0"
       variant="link"
       data-event-name="institution_login"
       onClick={onSubmitHandler}
@@ -57,7 +57,7 @@ const InstitutionLogistration = props => {
               <tr key={provider} className="pgn__data-table-row">
                 <td>
                   <Hyperlink
-                    className="btn nav-item p-0 mb-1 secondary-provider-link"
+                    className="button btn nav-item p-0 mb-1 secondary-provider-link"
                     destination={lmsBaseUrl + provider.loginUrl}
                   >
                     {provider.name}
