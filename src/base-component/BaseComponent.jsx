@@ -23,23 +23,11 @@ const BaseComponent = ({ children, showWelcomeBanner }) => {
   return (
     <>
       {getConfig().ENABLE_COOKIE_POLICY_BANNER ? <CookiePolicyBanner languageCode={getLocale()} /> : null}
-      <main id="main">
-        <div className="container">
-          <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
-            {authenticatedUser ? <AuthSmallLayout username={username} /> : <SmallLayout />}
-          </MediaQuery>
-          <MediaQuery minWidth={breakpoints.medium.minWidth} maxWidth={breakpoints.large.maxWidth - 1}>
-            {authenticatedUser ? <AuthMediumLayout username={username} /> : <MediumLayout />}
-          </MediaQuery>
-          <MediaQuery minWidth={breakpoints.extraLarge.minWidth} maxWidth={breakpoints.extraExtraLarge.maxWidth}>
-            {authenticatedUser ? <AuthLargeLayout username={username} /> : <LargeLayout />}
-          </MediaQuery>
-
-          <div className={classNames('content', { 'align-items-center mt-0': authenticatedUser })}>
-            {children}
-          </div>
+      <div className="layout">
+        <div className={classNames('content', { 'align-items-center': authenticatedUser })}>
+          {children}
         </div>
-      </main>
+      </div>
     </>
   );
 };
