@@ -289,7 +289,8 @@ class LoginPage extends React.Component {
               name="sign-in"
               id="sign-in"
               type="submit"
-              className="button login-button-width"
+              variant="brand"
+              className="button"
               state={submitState}
               labels={{
                 default: intl.formatMessage(messages['sign.in.button']),
