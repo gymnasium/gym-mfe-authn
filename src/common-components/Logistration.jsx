@@ -81,7 +81,7 @@ const Logistration = (props) => {
   };
 
   return (
-    <BaseComponent>
+    <BaseComponent showWelcomeBanner>
       <div>
         {disablePublicAccountCreation
           ? (

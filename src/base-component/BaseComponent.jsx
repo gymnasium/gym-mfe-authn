@@ -9,12 +9,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import MediaQuery from 'react-responsive';
 
-import AuthLargeLayout from './AuthLargeLayout';
-import AuthMediumLayout from './AuthMediumLayout';
-import AuthSmallLayout from './AuthSmallLayout';
-import LargeLayout from './LargeLayout';
-import MediumLayout from './MediumLayout';
-import SmallLayout from './SmallLayout';
+import dompurify from 'dompurify';
+import GymSettings from '../gym-frontend-components';
+const settings = await GymSettings;
+const welcomeMessage = { __html: dompurify.sanitize(settings?.messages.mfe.authn.welcome) };
 
 const BaseComponent = ({ children, showWelcomeBanner }) => {
   const authenticatedUser = showWelcomeBanner ? getAuthenticatedUser() : null;
@@ -24,6 +22,10 @@ const BaseComponent = ({ children, showWelcomeBanner }) => {
     <>
       {getConfig().ENABLE_COOKIE_POLICY_BANNER ? <CookiePolicyBanner languageCode={getLocale()} /> : null}
       <div className="layout">
+        {showWelcomeBanner && (welcomeMessage !== null | undefined) ? (
+          <div dangerouslySetInnerHTML={welcomeMessage} />
+        ) : null }
+        
         <div className={classNames('content', { 'align-items-center': authenticatedUser })}>
           {children}
         </div>

@@ -5,14 +5,12 @@ import { AppProvider } from '@edx/frontend-platform/react';
 import { Helmet } from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import GymSettings from './gym-frontend-components/data/settings';
-import GymHeader from './gym-frontend-components/gym-header/GymHeader';
+import GymSettings, { GymFooter, GymHeader } from './gym-frontend-components';
 
-const settings = await GymSettings();
-console.log(settings);
+const settings = await GymSettings;
 const root = settings.urls.root; // should be same as marketing URL
 const config = getConfig();
-const css = `${root}/css/mfe.css`;
+const css = `${root}${settings.css.mfe}`;
 
 import {
   Logistration, NotFoundPage, registerIcons, UnAuthOnlyRoute,
@@ -64,6 +62,8 @@ const MainApp = () => (
         </Switch>
       </div>
     </main>
+
+    <GymFooter />
   </AppProvider>
 );
 
