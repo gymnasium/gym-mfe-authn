@@ -609,7 +609,6 @@ const RegistrationPage = (props) => {
                 name="register-user"
                 type="submit"
                 variant="brand"
-                className="button"
                 state={submitState}
                 labels={{
                   default: formatMessage(messages['create.account.for.free.button']),
