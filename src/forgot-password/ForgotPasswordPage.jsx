@@ -133,7 +133,6 @@ const ForgotPasswordPage = (props) => {
               name="submit-forget-password"
               type="submit"
               variant="brand"
-              className="button"
               state={submitState}
               labels={{
                 default: formatMessage(messages['forgot.password.page.submit.button']),
