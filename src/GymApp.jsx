@@ -6,11 +6,11 @@ import { Helmet } from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import GymSettings, { GymFooter, GymHeader } from './gym-frontend-components';
-
+const timestamp = Date.now();
 const settings = await GymSettings;
 const root = settings.urls.root; // should be same as marketing URL
 const config = getConfig();
-const css = `${root}${settings.css.mfe}`;
+const css = `${root}${settings.css.mfe}?${timestamp}`;
 
 import {
   Logistration, NotFoundPage, registerIcons, UnAuthOnlyRoute,
