@@ -206,7 +206,6 @@ const ProgressiveProfiling = (props) => {
             <StatefulButton
               type="submit"
               variant="brand"
-              className="button"
               state={submitState}
               labels={{
                 default: showRecommendationsPage ? formatMessage(messages['optional.fields.next.button']) : formatMessage(messages['optional.fields.submit.button']),
