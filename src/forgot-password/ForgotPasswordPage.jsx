@@ -21,7 +21,7 @@ import { forgotPassword, setForgotPasswordFormData } from './data/actions';
 import { forgotPasswordResultSelector } from './data/selectors';
 import ForgotPasswordAlert from './ForgotPasswordAlert';
 import messages from './messages';
-import BaseContainer from '../base-container';
+import GymContainer from '../gym-container';
 import { FormGroup } from '../common-components';
 import { DEFAULT_STATE, LOGIN_PAGE, VALID_EMAIL_REGEX } from '../data/constants';
 import { updatePathWithQueryParams, windowScrollTo } from '../data/utils';
@@ -95,7 +95,7 @@ const ForgotPasswordPage = (props) => {
   );
 
   return (
-    <BaseContainer>
+    <GymContainer>
       <Helmet>
         <title>{formatMessage(messages['forgot.password.page.title'],
           { siteName: getConfig().SITE_NAME })}
@@ -160,7 +160,7 @@ const ForgotPasswordPage = (props) => {
           </Form>
         </div>
       </div>
-    </BaseContainer>
+    </GymContainer>
   );
 };
 

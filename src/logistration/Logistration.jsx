@@ -14,7 +14,7 @@ import { ChevronLeft } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import BaseContainer from '../base-container';
+import GymContainer from '../gym-container';
 import { clearThirdPartyAuthContextErrorMessage } from '../common-components/data/actions';
 import {
   tpaProvidersSelector,
@@ -90,7 +90,7 @@ const Logistration = (props) => {
   };
 
   return (
-    <BaseContainer>
+    <GymContainer>
       <div>
         {disablePublicAccountCreation
           ? (
@@ -138,7 +138,7 @@ const Logistration = (props) => {
             </div>
           )}
       </div>
-    </BaseContainer>
+    </GymContainer>
   );
 };
 

@@ -24,7 +24,7 @@ import { resetPasswordResultSelector } from './data/selectors';
 import { validatePassword } from './data/service';
 import messages from './messages';
 import ResetPasswordFailure from './ResetPasswordFailure';
-import BaseContainer from '../base-container';
+import GymContainer from '../gym-container';
 import { PasswordField } from '../common-components';
 import {
   LETTER_REGEX, LOGIN_PAGE, NUMBER_REGEX, RESET_PAGE,
@@ -143,7 +143,7 @@ const ResetPasswordPage = (props) => {
     navigate(updatePathWithQueryParams(LOGIN_PAGE));
   } else {
     return (
-      <BaseContainer>
+      <GymContainer>
         <div>
           <Helmet>
             <title>
@@ -195,7 +195,7 @@ const ResetPasswordPage = (props) => {
             </div>
           </div>
         </div>
-      </BaseContainer>
+      </GymContainer>
     );
   }
   return null;

@@ -25,7 +25,7 @@ import { saveUserProfile } from './data/actions';
 import { welcomePageContextSelector } from './data/selectors';
 import messages from './messages';
 import ProgressiveProfilingPageModal from './ProgressiveProfilingPageModal';
-import BaseContainer from '../base-container';
+import GymContainer from '../gym-container';
 import { RedirectLogistration } from '../common-components';
 import { getThirdPartyAuthContext } from '../common-components/data/actions';
 import {
@@ -194,7 +194,7 @@ const ProgressiveProfiling = (props) => {
   });
 
   return (
-    <BaseContainer showWelcomeBanner username={authenticatedUser?.username}>
+    <GymContainer showWelcomeBanner username={authenticatedUser?.username}>
       <Helmet>
         <title>{formatMessage(messages['progressive.profiling.page.title'],
           { siteName: getConfig().SITE_NAME })}
@@ -269,7 +269,7 @@ const ProgressiveProfiling = (props) => {
           </div>
         </Form>
       </div>
-    </BaseContainer>
+    </GymContainer>
   );
 };
 
