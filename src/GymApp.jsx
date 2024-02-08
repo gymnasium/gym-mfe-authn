@@ -5,8 +5,8 @@ import { AppProvider } from '@edx/frontend-platform/react';
 import { Helmet } from 'react-helmet';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import GymSettings, { GymFooter, GymHeader } from './gym-frontend-components';
 const config = getConfig();
+import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
 const timestamp = Date.now();
 const settings = await GymSettings;
 const root = settings.urls.root; // should be same as marketing URL
