@@ -22,14 +22,11 @@ const GymContainer = ({ children, showWelcomeBanner, username }) => {
   }, []);
 
   return (
-    <>
-      <div className="col-md-12 extra-large-screen-top-stripe" />
-      <div className="layout">
-        <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
-          {children}
-        </div>
+    <div className="layout">
+      <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
+        {children}
       </div>
-    </>
+    </div>
   );
 };
 
