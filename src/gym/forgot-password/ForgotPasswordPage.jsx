@@ -17,14 +17,14 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
-import { forgotPassword, setForgotPasswordFormData } from './data/actions';
-import { forgotPasswordResultSelector } from './data/selectors';
-import ForgotPasswordAlert from './ForgotPasswordAlert';
-import messages from './messages';
-import BaseContainer from '../base-container';
-import { FormGroup } from '../common-components';
-import { DEFAULT_STATE, LOGIN_PAGE, VALID_EMAIL_REGEX } from '../data/constants';
-import { updatePathWithQueryParams, windowScrollTo } from '../data/utils';
+import { forgotPassword, setForgotPasswordFormData } from '../../forgot-password/data/actions';
+import { forgotPasswordResultSelector } from '../../forgot-password/data/selectors';
+import ForgotPasswordAlert from '../../forgot-password/ForgotPasswordAlert';
+import messages from '../../forgot-password/messages';
+import GymContainer from '../container';
+import { FormGroup } from '../../common-components';
+import { DEFAULT_STATE, LOGIN_PAGE, VALID_EMAIL_REGEX } from '../../data/constants';
+import { updatePathWithQueryParams, windowScrollTo } from '../../data/utils';
 
 const ForgotPasswordPage = (props) => {
   const platformName = getConfig().SITE_NAME;
@@ -95,7 +95,7 @@ const ForgotPasswordPage = (props) => {
   );
 
   return (
-    <BaseContainer>
+    <GymContainer>
       <Helmet>
         <title>{formatMessage(messages['forgot.password.page.title'],
           { siteName: getConfig().SITE_NAME })}
@@ -106,7 +106,7 @@ const ForgotPasswordPage = (props) => {
           <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
         </Tabs>
         <div id="main-content" className="main-content">
-          <Form id="forget-password-form" name="forget-password-form" className="mw-xs">
+          <Form id="forget-password-form" name="forget-password-form gym-forget-password-form" className="mw-xs">
             <ForgotPasswordAlert email={bannerEmail} emailError={formErrors} status={status} />
             <h2 className="h4">
               {formatMessage(messages['forgot.password.page.heading'])}
@@ -160,7 +160,7 @@ const ForgotPasswordPage = (props) => {
           </Form>
         </div>
       </div>
-    </BaseContainer>
+    </GymContainer>
   );
 };
 

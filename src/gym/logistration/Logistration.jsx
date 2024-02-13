@@ -14,19 +14,19 @@ import { ChevronLeft } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import BaseContainer from '../base-container';
-import { clearThirdPartyAuthContextErrorMessage } from '../common-components/data/actions';
+import GymContainer from '../container';
+import { clearThirdPartyAuthContextErrorMessage } from '../../common-components/data/actions';
 import {
   tpaProvidersSelector,
-} from '../common-components/data/selectors';
-import messages from '../common-components/messages';
-import { LOGIN_PAGE, REGISTER_PAGE } from '../data/constants';
+} from '../../common-components/data/selectors';
+import messages from '../../common-components/messages';
+import { LOGIN_PAGE, REGISTER_PAGE } from '../../data/constants';
 import {
   getTpaHint, getTpaProvider, updatePathWithQueryParams,
-} from '../data/utils';
-import { LoginPage } from '../login';
-import { RegistrationPage } from '../register';
-import { backupRegistrationForm } from '../register/data/actions';
+} from '../../data/utils';
+import { LoginPage } from '../../login';
+import { RegistrationPage } from '../../register';
+import { backupRegistrationForm } from '../../register/data/actions';
 
 const Logistration = (props) => {
   const { selectedPage, tpaProviders } = props;
@@ -90,7 +90,7 @@ const Logistration = (props) => {
   };
 
   return (
-    <BaseContainer>
+    <GymContainer>
       <div>
         {disablePublicAccountCreation
           ? (
@@ -138,7 +138,7 @@ const Logistration = (props) => {
             </div>
           )}
       </div>
-    </BaseContainer>
+    </GymContainer>
   );
 };
 

@@ -16,20 +16,26 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { resetPassword, validateToken } from './data/actions';
+import { resetPassword, validateToken } from '../../reset-password/data/actions';
 import {
-  FORM_SUBMISSION_ERROR, PASSWORD_RESET_ERROR, PASSWORD_VALIDATION_ERROR, TOKEN_STATE,
-} from './data/constants';
-import { resetPasswordResultSelector } from './data/selectors';
-import { validatePassword } from './data/service';
-import messages from './messages';
-import ResetPasswordFailure from './ResetPasswordFailure';
-import BaseContainer from '../base-container';
-import { PasswordField } from '../common-components';
+  FORM_SUBMISSION_ERROR,
+  PASSWORD_RESET_ERROR,
+  PASSWORD_VALIDATION_ERROR,
+  TOKEN_STATE,
+} from '../../reset-password/data/constants';
+import { resetPasswordResultSelector } from '../../reset-password/data/selectors';
+import { validatePassword } from '../../reset-password/data/service';
+import messages from '../../reset-password/messages';
+import ResetPasswordFailure from '../../reset-password/ResetPasswordFailure';
+import GymContainer from '../container';
+import { PasswordField } from '../../common-components';
 import {
-  LETTER_REGEX, LOGIN_PAGE, NUMBER_REGEX, RESET_PAGE,
-} from '../data/constants';
-import { getAllPossibleQueryParams, updatePathWithQueryParams, windowScrollTo } from '../data/utils';
+  LETTER_REGEX,
+  LOGIN_PAGE,
+  NUMBER_REGEX,
+  RESET_PAGE,
+} from '../../data/constants';
+import { getAllPossibleQueryParams, updatePathWithQueryParams, windowScrollTo } from '../../data/utils';
 
 const ResetPasswordPage = (props) => {
   const { formatMessage } = useIntl();
@@ -143,7 +149,7 @@ const ResetPasswordPage = (props) => {
     navigate(updatePathWithQueryParams(LOGIN_PAGE));
   } else {
     return (
-      <BaseContainer>
+      <GymContainer>
         <div>
           <Helmet>
             <title>
@@ -195,7 +201,7 @@ const ResetPasswordPage = (props) => {
             </div>
           </div>
         </div>
-      </BaseContainer>
+      </GymContainer>
     );
   }
   return null;

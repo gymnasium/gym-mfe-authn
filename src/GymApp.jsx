@@ -5,8 +5,8 @@ import { AppProvider } from '@edx/frontend-platform/react';
 import { Helmet } from 'react-helmet';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-const config = getConfig();
 import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
+const config = getConfig();
 const timestamp = Date.now();
 const settings = await GymSettings;
 const root = settings.urls.root; // should be same as marketing URL
@@ -27,14 +27,14 @@ import {
   RESET_PAGE,
 } from './data/constants';
 import { updatePathWithQueryParams } from './data/utils';
-import { ForgotPasswordPage } from './forgot-password';
-import Logistration from './logistration/Logistration';
-import { ProgressiveProfiling } from './progressive-profiling';
+import { ForgotPasswordPage } from './gym/forgot-password';
+import Logistration from './gym/logistration/Logistration';
+import { ProgressiveProfiling } from './gym/progressive-profiling';
 import { RecommendationsPage } from './recommendations';
 import { RegistrationPage } from './register';
-import { ResetPasswordPage } from './reset-password';
+import { ResetPasswordPage } from './gym/reset-password';
 
-import './index.scss';
+import './GymApp.scss';
 
 registerIcons();
 

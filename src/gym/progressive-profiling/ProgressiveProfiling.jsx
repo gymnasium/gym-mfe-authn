@@ -21,23 +21,23 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
 
-import { saveUserProfile } from './data/actions';
-import { welcomePageContextSelector } from './data/selectors';
-import messages from './messages';
-import ProgressiveProfilingPageModal from './ProgressiveProfilingPageModal';
-import BaseContainer from '../base-container';
-import { RedirectLogistration } from '../common-components';
-import { getThirdPartyAuthContext } from '../common-components/data/actions';
+import { saveUserProfile } from '../../progressive-profiling/data/actions';
+import { welcomePageContextSelector } from '../../progressive-profiling/data/selectors';
+import messages from '../../progressive-profiling/messages';
+import ProgressiveProfilingPageModal from '../../progressive-profiling/ProgressiveProfilingPageModal';
+import GymContainer from '../container';
+import { RedirectLogistration } from '../../common-components';
+import { getThirdPartyAuthContext } from '../../common-components/data/actions';
 import {
   COMPLETE_STATE,
   DEFAULT_REDIRECT_URL,
   DEFAULT_STATE,
   FAILURE_STATE,
   PENDING_STATE,
-} from '../data/constants';
-import isOneTrustFunctionalCookieEnabled from '../data/oneTrust';
-import { getAllPossibleQueryParams, isHostAvailableInQueryParams } from '../data/utils';
-import { FormFieldRenderer } from '../field-renderer';
+} from '../../data/constants';
+import isOneTrustFunctionalCookieEnabled from '../../data/oneTrust';
+import { getAllPossibleQueryParams, isHostAvailableInQueryParams } from '../../data/utils';
+import { FormFieldRenderer } from '../../field-renderer';
 
 const ProgressiveProfiling = (props) => {
   const { formatMessage } = useIntl();
@@ -194,7 +194,7 @@ const ProgressiveProfiling = (props) => {
   });
 
   return (
-    <BaseContainer showWelcomeBanner username={authenticatedUser?.username}>
+    <GymContainer showWelcomeBanner username={authenticatedUser?.username}>
       <Helmet>
         <title>{formatMessage(messages['progressive.profiling.page.title'],
           { siteName: getConfig().SITE_NAME })}
@@ -269,7 +269,7 @@ const ProgressiveProfiling = (props) => {
           </div>
         </Form>
       </div>
-    </BaseContainer>
+    </GymContainer>
   );
 };
 
