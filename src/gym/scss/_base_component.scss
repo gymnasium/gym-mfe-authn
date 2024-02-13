@@ -9,7 +9,7 @@
   }
 
   @include media-breakpoint-up('xl') {
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -22,17 +22,17 @@
   }
 }
 
-.logo-small {
-  width: 44.67px;
-  margin-top: 1.25rem;
-  margin-left: 1.5rem;
-}
+// .logo-small {
+//   width: 44.67px;
+//   margin-top: 1.25rem;
+//   margin-left: 1.5rem;
+// }
 
-.logo {
-  width: 71px;
-  margin-top: 2rem;
-  margin-left: 1.5rem;
-}
+// .logo {
+//   width: 71px;
+//   margin-top: 2rem;
+//   margin-left: 1.5rem;
+// }
 
 .mw-320 {
   max-width: 320px;
