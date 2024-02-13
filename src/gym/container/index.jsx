@@ -3,6 +3,11 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
+import dompurify from 'dompurify';
+import GymSettings from '@edx/gym-frontend';
+const settings = await GymSettings;
+const welcomeMessage = { __html: dompurify.sanitize(settings?.messages.mfe.authn.welcome) };
+
 const GymContainer = ({ children, showWelcomeBanner, username }) => {
   const [baseContainerVersion, setBaseContainerVersion] = useState();
 
@@ -23,6 +28,9 @@ const GymContainer = ({ children, showWelcomeBanner, username }) => {
 
   return (
     <div className="gym-layout layout">
+      {showWelcomeBanner && (welcomeMessage !== null | undefined) ? (
+          <div dangerouslySetInnerHTML={welcomeMessage} />
+        ) : null }
       <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
         {children}
       </div>

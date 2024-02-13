@@ -90,7 +90,7 @@ const Logistration = (props) => {
   };
 
   return (
-    <GymContainer>
+    <GymContainer showWelcomeBanner>
       <div>
         {disablePublicAccountCreation
           ? (
