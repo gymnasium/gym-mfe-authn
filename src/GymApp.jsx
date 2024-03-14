@@ -10,7 +10,7 @@ const config = getConfig();
 const timestamp = Date.now();
 const settings = await GymSettings;
 const root = settings.urls.root; // should be same as marketing URL
-const css = `${root}${settings.css.mfe}?${timestamp}`;
+const css = `${root}/css/mfe-authn.css?${timestamp}`;
 
 import {
   EmbeddedRegistrationRoute, NotFoundPage, registerIcons, UnAuthOnlyRoute, Zendesk,
@@ -34,7 +34,8 @@ import { RecommendationsPage } from './recommendations';
 import { RegistrationPage } from './register';
 import { ResetPasswordPage } from './gym/reset-password';
 
-import './GymApp.scss';
+// Begin the arduous task of customizing the CSS
+// import './GymApp.scss';
 
 registerIcons();
 
