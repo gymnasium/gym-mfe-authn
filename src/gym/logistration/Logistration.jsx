@@ -91,7 +91,7 @@ const Logistration = (props) => {
 
   return (
     <GymContainer showWelcomeBanner>
-      <div>
+      <>
         {disablePublicAccountCreation
           ? (
             <>
@@ -109,7 +109,7 @@ const Logistration = (props) => {
             </>
           )
           : (
-            <div>
+            <>
               {institutionLogin
                 ? (
                   <Tabs defaultActiveKey="" id="controlled-tab" onSelect={handleInstitutionLogin}>
@@ -135,9 +135,9 @@ const Logistration = (props) => {
                     />
                   )}
               </div>
-            </div>
+            </>
           )}
-      </div>
+      </>
     </GymContainer>
   );
 };

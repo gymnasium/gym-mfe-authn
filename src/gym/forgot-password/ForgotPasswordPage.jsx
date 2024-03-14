@@ -101,7 +101,7 @@ const ForgotPasswordPage = (props) => {
           { siteName: getConfig().SITE_NAME })}
         </title>
       </Helmet>
-      <div>
+      <>
         <Tabs activeKey="" id="controlled-tab" onSelect={(key) => navigate(updatePathWithQueryParams(key))}>
           <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
         </Tabs>
@@ -159,7 +159,7 @@ const ForgotPasswordPage = (props) => {
             </p>
           </Form>
         </div>
-      </div>
+      </>
     </GymContainer>
   );
 };

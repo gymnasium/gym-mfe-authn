@@ -150,12 +150,12 @@ const ResetPasswordPage = (props) => {
   } else {
     return (
       <GymContainer>
-        <div>
-          <Helmet>
-            <title>
-              {formatMessage(messages['reset.password.page.title'], { siteName: getConfig().SITE_NAME })}
-            </title>
-          </Helmet>
+        <Helmet>
+          <title>
+            {formatMessage(messages['reset.password.page.title'], { siteName: getConfig().SITE_NAME })}
+          </title>
+        </Helmet>
+        <>
           <Tabs activeKey="" id="controlled-tab" onSelect={(key) => navigate(updatePathWithQueryParams(key))}>
             <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
           </Tabs>
@@ -200,7 +200,7 @@ const ResetPasswordPage = (props) => {
               </Form>
             </div>
           </div>
-        </div>
+        </>
       </GymContainer>
     );
   }
