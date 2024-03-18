@@ -9,11 +9,15 @@ import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
 const config = getConfig();
 const timestamp = Date.now();
 const settings = await GymSettings;
-const root = settings.urls.root; // should be same as marketing URL
+const root = getConfig().MARKETING_SITE_BASE_URL;
 const css = `${root}/css/mfe-authn.css?${timestamp}`;
 
 import {
-  EmbeddedRegistrationRoute, NotFoundPage, registerIcons, UnAuthOnlyRoute, Zendesk,
+  EmbeddedRegistrationRoute,
+  NotFoundPage,
+  registerIcons,
+  UnAuthOnlyRoute,
+  // Zendesk,
 } from './common-components';
 import configureStore from './data/configureStore';
 import {
@@ -31,7 +35,7 @@ import { ForgotPasswordPage } from './gym/forgot-password';
 import Logistration from './gym/logistration/Logistration';
 import { ProgressiveProfiling } from './gym/progressive-profiling';
 import { RecommendationsPage } from './recommendations';
-import { RegistrationPage } from './register';
+import { RegistrationPage } from './gym/register';
 import { ResetPasswordPage } from './gym/reset-password';
 
 // Begin the arduous task of customizing the CSS

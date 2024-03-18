@@ -12,33 +12,33 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import Skeleton from 'react-loading-skeleton';
 
-import ConfigurableRegistrationForm from './components/ConfigurableRegistrationForm';
-import RegistrationFailure from './components/RegistrationFailure';
-import ThirdPartyAuth from './components/ThirdPartyAuth';
+import ConfigurableRegistrationForm from '../../register/components/ConfigurableRegistrationForm';
+import RegistrationFailure from '../../register/components/RegistrationFailure';
+import ThirdPartyAuth from '../../register/components/ThirdPartyAuth';
 import {
   backupRegistrationFormBegin,
   clearRegistrationBackendError,
   registerNewUser,
   setUserPipelineDataLoaded,
-} from './data/actions';
+} from '../../register/data/actions';
 import {
   FORM_SUBMISSION_ERROR,
   TPA_AUTHENTICATION_FAILURE,
-} from './data/constants';
-import { getBackendValidations, isFormValid, prepareRegistrationPayload } from './data/utils';
-import messages from './messages';
-import { EmailField, NameField, UsernameField } from './RegistrationFields';
+} from '../../register/data/constants';
+import { getBackendValidations, isFormValid, prepareRegistrationPayload } from '../../register/data/utils';
+import messages from '../../register/messages';
+import { EmailField, NameField, UsernameField } from '../../register/RegistrationFields';
 import {
   InstitutionLogistration, PasswordField, RedirectLogistration, ThirdPartyAuthAlert,
-} from '../common-components';
-import { getThirdPartyAuthContext as getRegistrationDataFromBackend } from '../common-components/data/actions';
-import EnterpriseSSO from '../common-components/EnterpriseSSO';
+} from '../../common-components';
+import { getThirdPartyAuthContext as getRegistrationDataFromBackend } from '../../common-components/data/actions';
+import EnterpriseSSO from '../../common-components/EnterpriseSSO';
 import {
   COMPLETE_STATE, PENDING_STATE, REGISTER_PAGE,
-} from '../data/constants';
+} from '../../data/constants';
 import {
   getAllPossibleQueryParams, getTpaHint, getTpaProvider, isHostAvailableInQueryParams, setCookie,
-} from '../data/utils';
+} from '../../data/utils';
 
 /**
  * Main Registration Page component
