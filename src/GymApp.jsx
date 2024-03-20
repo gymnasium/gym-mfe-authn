@@ -51,7 +51,6 @@ const GymApp = () => (
     </Helmet>
 
     <GymHeader />
-    <main><div className="container"> 
 
     <Routes>
       <Route path="/" element={<Navigate replace to={updatePathWithQueryParams(REGISTER_PAGE)} />} />
@@ -73,7 +72,7 @@ const GymApp = () => (
       <Route path={PAGE_NOT_FOUND} element={<NotFoundPage />} />
       <Route path="*" element={<Navigate replace to={PAGE_NOT_FOUND} />} />
     </Routes>
-    </div></main>
+
     <GymFooter />
   </AppProvider>
 );

@@ -27,14 +27,19 @@ const GymContainer = ({ children, showWelcomeBanner, username }) => {
   }, []);
 
   return (
-    <div className="gym-layout layout">
-      {showWelcomeBanner && (welcomeMessage !== null | undefined) ? (
-          <div dangerouslySetInnerHTML={welcomeMessage} />
-        ) : null }
-      <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
-        {children}
+    <main>
+      <div className="container"> 
+        <div className="gym-layout layout">
+          {showWelcomeBanner && (welcomeMessage !== null | undefined) ? (
+              <div className="welcome-message" dangerouslySetInnerHTML={welcomeMessage} />
+            ) : null }
+          <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
+            {children}
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
+
   );
 };
 
