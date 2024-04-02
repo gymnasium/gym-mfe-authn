@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { getConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppProvider } from '@edx/frontend-platform/react';
 import { Helmet } from 'react-helmet';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
+
+ensureConfig(['MARKETING_SITE_BASE_URL']);
+
 const config = getConfig();
 const timestamp = Date.now();
 const settings = await GymSettings;
 const root = getConfig().MARKETING_SITE_BASE_URL;
-const css = `${root}/css/mfe-authn.css?${timestamp}`;
+const css = `${settings.urls.root}/css/mfe-authn.css?${timestamp}`;
 
 import {
   EmbeddedRegistrationRoute,
