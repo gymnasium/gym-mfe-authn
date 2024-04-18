@@ -34,7 +34,7 @@
   "dependencies": {
     "@edx/brand": "github:gymnasium/brand-openedx#gym.quince.1",
     "@edx/frontend-platform": "^5.5.4",
-    "@edx/gym-frontend": "github:gymnasium/gym-frontend-components#gym.quince.1",
+    "@edx/gym-frontend": "github:gymnasium/gym-frontend-components#gym.quince.2",
     "@edx/paragon": "20.46.2",
     "@fortawesome/fontawesome-svg-core": "6.4.2",
     "@fortawesome/free-brands-svg-icons": "6.4.2",

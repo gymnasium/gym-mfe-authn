@@ -1,39 +1,32 @@
 import React, { useEffect, useState } from 'react';
 
-import classNames from 'classnames';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
+
+import { htmlDecode } from '@edx/gym-frontend';
+
 import PropTypes from 'prop-types';
 
 import dompurify from 'dompurify';
-import GymSettings from '@edx/gym-frontend';
-const settings = await GymSettings;
-const welcomeMessage = { __html: dompurify.sanitize(settings?.messages.mfe.authn.welcome) };
+
+ensureConfig(['GYM_AUTHN_WELCOME_MSG'], 'GymContainer');
+
+const getWelcomeMsg = () => getConfig().GYM_AUTHN_WELCOME_MSG;
+const decodedMsg = () => htmlDecode(getWelcomeMsg());
 
 const GymContainer = ({ children, showWelcomeBanner, username }) => {
   const [baseContainerVersion, setBaseContainerVersion] = useState();
 
-  useEffect(() => {
-    const initRebrandExperiment = () => {
-      if (window.experiments?.rebrandExperiment) {
-        setBaseContainerVersion(window.experiments?.rebrandExperiment?.variation);
-      } else {
-        window.experiments = window.experiments || {};
-        window.experiments.rebrandExperiment = {};
-        window.experiments.rebrandExperiment.handleLoaded = () => {
-          setBaseContainerVersion(window.experiments?.rebrandExperiment?.variation);
-        };
-      }
-    };
-    initRebrandExperiment();
-  }, []);
+  const welcomeMsg = { __html: dompurify.sanitize(decodedMsg()) };
 
   return (
     <main>
       <div className="container"> 
         <div className="gym-layout layout">
-          {showWelcomeBanner && (welcomeMessage !== null | undefined) ? (
-              <div className="welcome-message" dangerouslySetInnerHTML={welcomeMessage} />
-            ) : null }
-          <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
+          {showWelcomeBanner && welcomeMsg && (
+            <div className="welcome-message" dangerouslySetInnerHTML={ welcomeMsg } />
+          )}
+
+          <div className='content'>
             {children}
           </div>
         </div>

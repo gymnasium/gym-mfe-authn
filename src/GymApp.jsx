@@ -5,15 +5,13 @@ import { AppProvider } from '@edx/frontend-platform/react';
 import { Helmet } from 'react-helmet';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
+import { GymFooter, GymHeader, timestamp } from '@edx/gym-frontend';
 
-ensureConfig(['MARKETING_SITE_BASE_URL']);
+ensureConfig(['MARKETING_SITE_BASE_URL'], 'GymApp');
 
-const config = getConfig();
-const timestamp = Date.now();
-const settings = await GymSettings;
-const root = getConfig().MARKETING_SITE_BASE_URL;
-const css = `${settings.urls.root}/css/mfe-authn.css?${timestamp}`;
+const getBaseUrl = () => getConfig().MARKETING_SITE_BASE_URL;
+const getFaviconUrl = () => getConfig().FAVICON_URL;
+const getStyles = () => `${getBaseUrl()}/css/mfe-authn.css?${timestamp}`;
 
 import {
   EmbeddedRegistrationRoute,
@@ -49,8 +47,8 @@ registerIcons();
 const GymApp = () => (
   <AppProvider store={configureStore()}>
     <Helmet>
-      <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
-      <link rel="stylesheet" href={css} />
+      <link rel="shortcut icon" href={getFaviconUrl()} type="image/x-icon" />
+      <link rel="stylesheet" href={getStyles()} />
     </Helmet>
 
     <GymHeader />
