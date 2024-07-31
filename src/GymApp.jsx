@@ -20,8 +20,8 @@ import {
   RESET_PAGE,
 } from './data/constants';
 import { updatePathWithQueryParams } from './data/utils';
-import { ForgotPasswordPage } from './forgot-password';
-import Logistration from './logistration/Logistration';
+import { ForgotPasswordPage } from './forgot-password/';
+import Logistration from './logistration/GymLogistration';
 import { ProgressiveProfiling } from './progressive-profiling';
 import { RecommendationsPage } from './recommendations';
 import { RegistrationPage } from './register';

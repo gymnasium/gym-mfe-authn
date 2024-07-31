@@ -12,13 +12,13 @@ import {
 } from './components/image-layout';
 import { AuthLargeLayout, AuthMediumLayout, AuthSmallLayout } from './components/welcome-page-layout';
 
-const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
+const GymContainer = ({ children, showWelcomeBanner, fullName }) => {
   const enableImageLayout = getConfig().ENABLE_IMAGE_LAYOUT;
 
   if (enableImageLayout) {
     return (
       <div className="layout">
-        <MediaQuery maxWidth={breakpoints.extraSmall.maxWidth - 1}>
+        {/* <MediaQuery maxWidth={breakpoints.extraSmall.maxWidth - 1}>
           {showWelcomeBanner ? <AuthSmallLayout fullName={fullName} /> : <ImageExtraSmallLayout />}
         </MediaQuery>
         <MediaQuery minWidth={breakpoints.small.minWidth} maxWidth={breakpoints.small.maxWidth - 1}>
@@ -29,7 +29,7 @@ const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
         </MediaQuery>
         <MediaQuery minWidth={breakpoints.extraLarge.minWidth}>
           {showWelcomeBanner ? <AuthLargeLayout fullName={fullName} /> : <ImageLargeLayout />}
-        </MediaQuery>
+        </MediaQuery> */}
         <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
           {children}
         </div>
@@ -58,15 +58,15 @@ const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
   );
 };
 
-BaseContainer.defaultProps = {
+GymContainer.defaultProps = {
   showWelcomeBanner: false,
   fullName: null,
 };
 
-BaseContainer.propTypes = {
+GymContainer.propTypes = {
   children: PropTypes.node.isRequired,
   showWelcomeBanner: PropTypes.bool,
   fullName: PropTypes.string,
 };
 
-export default BaseContainer;
+export default GymContainer;
