@@ -1,7 +1,7 @@
 {
   "name": "@edx/frontend-app-authn",
-  "version": "0.1.0",
-  "description": "Frontend application template",
+  "version": "0.1.0-gym.redwood",
+  "description": "Authentication frontend for Gymnasium",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/openedx/frontend-app-authn.git"
@@ -39,6 +39,8 @@
     "@fortawesome/free-brands-svg-icons": "6.5.2",
     "@fortawesome/free-solid-svg-icons": "6.5.2",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@openedx/frontend-slot-footer": "^1.0.2",
+    "@openedx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@openedx/paragon": "^22.1.1",
     "@optimizely/react-sdk": "^2.9.1",
     "@redux-devtools/extension": "3.3.0",
@@ -47,7 +49,8 @@
     "algoliasearch": "^4.14.3",
     "algoliasearch-helper": "^3.14.0",
     "classnames": "2.5.1",
-    "core-js": "3.36.1",
+    "core-js": "3.37.1",
+    "dompurify": "^3.1.6",
     "fastest-levenshtein": "1.0.16",
     "form-urlencoded": "6.1.4",
     "prop-types": "15.8.1",
@@ -71,9 +74,9 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "^1.1.1",
+    "@edx/browserslist-config": "1.2.0",
     "@edx/reactifex": "1.1.0",
-    "@openedx/frontend-build": "13.1.4",
+    "@openedx/frontend-build": "14.0.14",
     "babel-plugin-formatjs": "10.5.14",
     "eslint-plugin-import": "2.29.1",
     "glob": "7.2.3",
