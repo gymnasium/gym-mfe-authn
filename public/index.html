@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en-us">
   <head>
+      <meta charset="utf-8 />
       <title><%= (process.env.SITE_NAME && process.env.SITE_NAME != 'null') ? 'Authentication | ' + process.env.SITE_NAME : 'Authentication' %></title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="robots" content="noai, noimageai" />
+      <meta name="robots" content="index, nofollow" />
       <link rel="shortcut icon" href="<%= process.env.FAVICON_URL %>" type="image/x-icon" />
       <link rel="stylesheet" href="<%= process.env.MARKETING_SITE_BASE_URL %>/css/mfe-authn.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.contentWindow.min.js"
