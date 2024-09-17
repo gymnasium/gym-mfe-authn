@@ -70,11 +70,32 @@ const ConfigurableRegistrationForm = (props) => {
     }
   }, [autoSubmitRegistrationForm]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const formatErrorMessage = (error) => {
+    if (typeof error === 'string') {
+      return error;
+    }
+    if (typeof error === 'object') {
+      try {
+        const parsedError = JSON.parse(error);
+        if (parsedError.required) {
+          return parsedError.required;
+        }
+        if (parsedError.invalid) {
+          return parsedError.invalid;
+        }
+        return Object.values(parsedError).join(' ');
+      } catch (e) {
+        return Object.values(error).join(' ');
+      }
+    }
+    return '';
+  };
+
   const handleErrorChange = (fieldName, error) => {
     if (fieldName) {
       setFieldErrors(prevErrors => ({
         ...prevErrors,
-        [fieldName]: error,
+        [fieldName]: formatErrorMessage(error),
       }));
     }
   };
@@ -97,7 +118,7 @@ const ConfigurableRegistrationForm = (props) => {
     const { name, value } = event.target;
     let error = '';
     if ((!value || !value.trim()) && fieldDescriptions[name]?.error_message) {
-      error = fieldDescriptions[name].error_message;
+      error = formatErrorMessage(fieldDescriptions[name].error_message);
     } else if (name === 'confirm_email' && value !== email) {
       error = formatMessage(messages['email.do.not.match']);
     }
@@ -126,7 +147,7 @@ const ConfigurableRegistrationForm = (props) => {
                   fieldType={fieldData.type}
                   value={formFields[fieldData.name]}
                   onChangeHandler={handleOnChange}
-                  errorMessage={fieldErrors[fieldData.name]}
+                  errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
                 />
               </span>,
             );
@@ -138,7 +159,7 @@ const ConfigurableRegistrationForm = (props) => {
               <TermsOfService
                 value={formFields[fieldData.name]}
                 onChangeHandler={handleOnChange}
-                errorMessage={fieldErrors[fieldData.name]}
+                errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
               />
             </span>,
           );
@@ -152,7 +173,7 @@ const ConfigurableRegistrationForm = (props) => {
                 onChangeHandler={handleOnChange}
                 handleBlur={handleOnBlur}
                 handleFocus={handleOnFocus}
-                errorMessage={fieldErrors[fieldData.name]}
+                errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
                 isRequired
               />
             </span>,
@@ -167,7 +188,7 @@ const ConfigurableRegistrationForm = (props) => {
         <CountryField
           countryList={countryList}
           selectedCountry={formFields.country}
-          errorMessage={fieldErrors.country || ''}
+          errorMessage={typeof fieldErrors.country === 'object' ? JSON.stringify(fieldErrors.country) : fieldErrors.country || ''}
           onChangeHandler={handleOnChange}
           handleErrorChange={handleErrorChange}
           onBlurHandler={handleOnBlur}
