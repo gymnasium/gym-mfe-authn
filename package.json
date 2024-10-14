@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-app-authn",
-  "version": "0.1.0-gym.redwood",
+  "version": "0.1.1-gym.redwood",
   "description": "Authentication frontend for Gymnasium",
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "@fortawesome/free-brands-svg-icons": "6.5.2",
     "@fortawesome/free-solid-svg-icons": "6.5.2",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@intercom/messenger-js-sdk": "^0.0.14",
     "@openedx/frontend-slot-footer": "^1.0.2",
     "@openedx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@openedx/paragon": "^22.1.1",
