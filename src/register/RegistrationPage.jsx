@@ -30,7 +30,7 @@ import {
   isFormValid, prepareRegistrationPayload,
 } from './data/utils';
 import messages from './messages';
-import { EmailField, NameField, UsernameField } from './RegistrationFields';
+import { EmailField, NameField, UsernameField, ConfirmEmailField } from './RegistrationFields';
 import {
   InstitutionLogistration,
   PasswordField,
@@ -330,6 +330,23 @@ const RegistrationPage = (props) => {
                   floatingLabel={formatMessage(messages['registration.username.label'])}
                 />
               )}
+              <EmailField
+                name="email"
+                value={formFields.email}
+                handleErrorChange={handleErrorChange}
+                handleChange={handleOnChange}
+                errorMessage={errors.email}
+                helpText={[formatMessage(messages['help.text.email'])]}
+                floatingLabel={formatMessage(messages['registration.email.label'])}
+              />
+              <ConfirmEmailField
+                name="confirm_email"
+                value={formFields.confirm_email}
+                emailValue={formFields.email}
+                handleChange={handleOnChange}
+                handleErrorChange={handleErrorChange}
+                errorMessage={errors.confirm_email}
+              />
               {!currentProvider && (
                 <PasswordField
                   name="password"
@@ -340,15 +357,6 @@ const RegistrationPage = (props) => {
                   floatingLabel={formatMessage(messages['registration.password.label'])}
                 />
               )}
-              <EmailField
-                name="email"
-                value={formFields.email}
-                handleErrorChange={handleErrorChange}
-                handleChange={handleOnChange}
-                errorMessage={errors.email}
-                helpText={[formatMessage(messages['help.text.email'])]}
-                floatingLabel={formatMessage(messages['registration.email.label'])}
-              />
               <ConfigurableRegistrationForm
                 email={formFields.email}
                 fieldErrors={errors}

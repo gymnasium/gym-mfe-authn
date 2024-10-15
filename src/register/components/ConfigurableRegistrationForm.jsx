@@ -133,51 +133,53 @@ const ConfigurableRegistrationForm = (props) => {
   if (flags.showConfigurableRegistrationFields) {
     Object.keys(fieldDescriptions).forEach(fieldName => {
       const fieldData = fieldDescriptions[fieldName];
-      switch (fieldData.name) {
-        case FIELDS.COUNTRY:
-          showCountryField = true;
-          break;
-        case FIELDS.HONOR_CODE:
-          if (fieldData.type === 'tos_and_honor_code') {
-            showTermsOfServiceAndHonorCode = true;
-          } else {
+      if (fieldData.name !== 'confirm_email') {
+        switch (fieldData.name) {
+          case FIELDS.COUNTRY:
+            showCountryField = true;
+            break;
+          case FIELDS.HONOR_CODE:
+            if (fieldData.type === 'tos_and_honor_code') {
+              showTermsOfServiceAndHonorCode = true;
+            } else {
+              honorCode.push(
+                <span key={fieldData.name}>
+                  <HonorCode
+                    fieldType={fieldData.type}
+                    value={formFields[fieldData.name]}
+                    onChangeHandler={handleOnChange}
+                    errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
+                  />
+                </span>,
+              );
+            }
+            break;
+          case FIELDS.TERMS_OF_SERVICE:
             honorCode.push(
               <span key={fieldData.name}>
-                <HonorCode
-                  fieldType={fieldData.type}
+                <TermsOfService
                   value={formFields[fieldData.name]}
                   onChangeHandler={handleOnChange}
                   errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
                 />
               </span>,
             );
-          }
-          break;
-        case FIELDS.TERMS_OF_SERVICE:
-          honorCode.push(
-            <span key={fieldData.name}>
-              <TermsOfService
-                value={formFields[fieldData.name]}
-                onChangeHandler={handleOnChange}
-                errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
-              />
-            </span>,
-          );
-          break;
-        default:
-          formFieldDescriptions.push(
-            <span key={fieldData.name}>
-              <FormFieldRenderer
-                fieldData={fieldData}
-                value={formFields[fieldData.name]}
-                onChangeHandler={handleOnChange}
-                handleBlur={handleOnBlur}
-                handleFocus={handleOnFocus}
-                errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
-                isRequired
-              />
-            </span>,
-          );
+            break;
+          default:
+            formFieldDescriptions.push(
+              <span key={fieldData.name}>
+                <FormFieldRenderer
+                  fieldData={fieldData}
+                  value={formFields[fieldData.name]}
+                  onChangeHandler={handleOnChange}
+                  handleBlur={handleOnBlur}
+                  handleFocus={handleOnFocus}
+                  errorMessage={typeof fieldErrors[fieldData.name] === 'object' ? JSON.stringify(fieldErrors[fieldData.name]) : fieldErrors[fieldData.name]}
+                  isRequired
+                />
+              </span>,
+            );
+        }
       }
     });
   }
