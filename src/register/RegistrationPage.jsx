@@ -341,7 +341,7 @@ const RegistrationPage = (props) => {
               />
               <ConfirmEmailField
                 name="confirm_email"
-                value={formFields.confirm_email}
+                value={formFields.confirm_email || ''}
                 emailValue={formFields.email}
                 handleChange={handleOnChange}
                 handleErrorChange={handleErrorChange}
