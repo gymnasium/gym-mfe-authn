@@ -91,6 +91,11 @@ const messages = defineMessages({
     defaultMessage: 'Enter your email',
     description: 'Error message for empty email field',
   },
+  'empty.confirm.email.field.error': {
+    id: 'empty.confirm.email.field.error',
+    defaultMessage: 'Re-enter your email',
+    description: 'Error message for empty confirm email field',
+  },
   'empty.username.field.error': {
     id: 'empty.username.field.error',
     defaultMessage: 'Username must be between 2 and 30 characters',
