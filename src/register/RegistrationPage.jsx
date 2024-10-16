@@ -256,6 +256,8 @@ const RegistrationPage = (props) => {
     if (formFields.confirm_email !== formFields.email) {
       setErrors(prevErrors => ({ ...prevErrors, confirm_email: formatMessage(messages['email.do.not.match']) }));
       isValid = false;
+    } else {
+      setErrors(prevErrors => ({ ...prevErrors, confirm_email: '' }));
     }
 
     if (isValid) {
