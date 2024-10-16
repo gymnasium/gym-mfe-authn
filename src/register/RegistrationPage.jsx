@@ -90,7 +90,7 @@ const RegistrationPage = (props) => {
   const queryParams = useMemo(() => getAllPossibleQueryParams(), []);
   const tpaHint = useMemo(() => getTpaHint(), []);
 
-  const [formFields, setFormFields] = useState({ ...backedUpFormData.formFields });
+  const [formFields, setFormFields] = useState({ ...backedUpFormData.formFields, confirm_email: '' });
   const [configurableFormFields, setConfigurableFormFields] = useState({ ...backedUpFormData.configurableFormFields });
   const [errors, setErrors] = useState({ ...backedUpFormData.errors });
   const [errorCode, setErrorCode] = useState({ type: '', count: 0 });
@@ -250,6 +250,10 @@ const RegistrationPage = (props) => {
   };
 
   const handleSubmit = (e) => {
+    if (!formFields.confirm_email || formFields.confirm_email !== formFields.email) {
+      setErrors(prevErrors => ({ ...prevErrors, confirm_email: formatMessage(messages['email.do.not.match']) }));
+      isValid = false;
+    }
     e.preventDefault();
     registerUser();
   };
@@ -341,7 +345,7 @@ const RegistrationPage = (props) => {
               />
               <ConfirmEmailField
                 name="confirm_email"
-                value={formFields.confirm_email || ''}
+                value={formFields.confirm_email}
                 emailValue={formFields.email}
                 handleChange={handleOnChange}
                 handleErrorChange={handleErrorChange}

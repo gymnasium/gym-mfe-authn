@@ -9,38 +9,44 @@ import validateConfirmEmail from './validator';
 const ConfirmEmailField = (props) => {
   const { formatMessage } = useIntl();
   const {
+    name,
     value,
     emailValue,
     handleChange,
     handleErrorChange,
+    errorMessage,
   } = props;
 
   const handleOnBlur = (e) => {
     const { value: confirmEmailValue } = e.target;
     const error = validateConfirmEmail(confirmEmailValue, emailValue, formatMessage);
-    handleErrorChange('confirm_email', error);
+    handleErrorChange(name, error);
   };
 
   const handleOnFocus = () => {
-    handleErrorChange('confirm_email', '');
+    handleErrorChange(name, '');
   };
 
   return (
     <FormGroup
-      {...props}
+      name={name}
+      value={value}
+      handleChange={handleChange}
       handleBlur={handleOnBlur}
       handleFocus={handleOnFocus}
-      handleChange={handleChange}
+      errorMessage={errorMessage}
       floatingLabel={formatMessage(messages['registration.confirm.email.label'])}
     />
   );
 };
 
 ConfirmEmailField.propTypes = {
+  name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   emailValue: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleErrorChange: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
 };
 
 export default ConfirmEmailField;
