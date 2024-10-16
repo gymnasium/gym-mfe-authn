@@ -244,18 +244,23 @@ const RegistrationPage = (props) => {
       flags.showMarketingEmailOptInCheckbox,
       totalRegistrationTime,
       queryParams);
-
+    delete payload.confirm_email; // Remove confirm_email from the payload
     // making register call
     dispatch(registerNewUser(payload));
   };
 
   const handleSubmit = (e) => {
-    if (!formFields.confirm_email || formFields.confirm_email !== formFields.email) {
+    e.preventDefault();
+    let isValid = true;
+
+    if (formFields.confirm_email !== formFields.email) {
       setErrors(prevErrors => ({ ...prevErrors, confirm_email: formatMessage(messages['email.do.not.match']) }));
       isValid = false;
     }
-    e.preventDefault();
-    registerUser();
+
+    if (isValid) {
+      registerUser();
+    }
   };
 
   useEffect(() => {
@@ -311,7 +316,7 @@ const RegistrationPage = (props) => {
               failureCount={errorCode.count}
               context={{ provider: currentProvider, errorMessage: thirdPartyAuthErrorMessage }}
             />
-            <Form id="registration-form" name="registration-form">
+            <Form id="registration-form" name="registration-form" onSubmit={handleSubmit}>
               <NameField
                 name="name"
                 value={formFields.name}
