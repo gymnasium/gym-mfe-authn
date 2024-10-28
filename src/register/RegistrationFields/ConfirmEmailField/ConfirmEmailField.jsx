@@ -1,52 +1,54 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import PropTypes from 'prop-types';
 
-import { FormGroup } from '../../../common-components';
-import messages from '../../messages';
 import validateConfirmEmail from './validator';
+import { FormGroup } from '../../../common-components';
+import { clearRegistrationBackendError } from '../../data/actions';
 
 const ConfirmEmailField = (props) => {
   const { formatMessage } = useIntl();
+  const dispatch = useDispatch();
+
   const {
-    name,
-    value,
-    emailValue,
     handleChange,
     handleErrorChange,
-    errorMessage,
+    emailValue,
   } = props;
 
   const handleOnBlur = (e) => {
-    const { value: confirmEmailValue } = e.target;
-    const error = validateConfirmEmail(confirmEmailValue, emailValue, formatMessage);
-    handleErrorChange(name, error);
+    const { value } = e.target;
+    const fieldError = validateConfirmEmail(value, emailValue, formatMessage);
+    if (fieldError) {
+      handleErrorChange('confirm_email', fieldError);
+    }
   };
 
   const handleOnFocus = () => {
-    handleErrorChange(name, '');
+    handleErrorChange('confirm_email', '');
+    dispatch(clearRegistrationBackendError('confirm_email'));
   };
 
   return (
     <FormGroup
-      name={name}
-      value={value}
-      handleChange={handleChange}
+      {...props}
       handleBlur={handleOnBlur}
       handleFocus={handleOnFocus}
-      errorMessage={errorMessage}
-      floatingLabel={formatMessage(messages['registration.confirm.email.label'])}
     />
   );
 };
 
 ConfirmEmailField.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   emailValue: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleErrorChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
   errorMessage: PropTypes.string,
+};
+
+ConfirmEmailField.defaultProps = {
+  errorMessage: '',
 };
 
 export default ConfirmEmailField;

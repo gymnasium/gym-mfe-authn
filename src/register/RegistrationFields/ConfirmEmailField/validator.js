@@ -1,13 +1,15 @@
 import messages from '../../messages';
 
 const validateConfirmEmail = (value, emailValue, formatMessage) => {
-  let error = '';
+  let fieldError = '';
+
   if (!value) {
-    error = formatMessage(messages['empty.confirm.email.field.error']);
+    fieldError = formatMessage(messages['empty.confirm.email.field.error']);
   } else if (value !== emailValue) {
-    error = formatMessage(messages['email.do.not.match']);
+    fieldError = formatMessage(messages['email.do.not.match']);
   }
-  return error;
+
+  return fieldError;
 };
 
 export default validateConfirmEmail;
