@@ -2,21 +2,17 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import PropTypes from 'prop-types';
-
 import validateConfirmEmail from './validator';
 import { FormGroup } from '../../../common-components';
 import { clearRegistrationBackendError } from '../../data/actions';
-
 const ConfirmEmailField = (props) => {
   const { formatMessage } = useIntl();
   const dispatch = useDispatch();
-
   const {
     handleChange,
     handleErrorChange,
     emailValue,
   } = props;
-
   const handleOnBlur = (e) => {
     const { value } = e.target;
     const fieldError = validateConfirmEmail(value, emailValue, formatMessage);
@@ -24,12 +20,10 @@ const ConfirmEmailField = (props) => {
       handleErrorChange('confirm_email', fieldError);
     }
   };
-
   const handleOnFocus = () => {
     handleErrorChange('confirm_email', '');
     dispatch(clearRegistrationBackendError('confirm_email'));
   };
-
   return (
     <FormGroup
       {...props}
@@ -38,7 +32,6 @@ const ConfirmEmailField = (props) => {
     />
   );
 };
-
 ConfirmEmailField.propTypes = {
   emailValue: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
@@ -46,9 +39,7 @@ ConfirmEmailField.propTypes = {
   value: PropTypes.string.isRequired,
   errorMessage: PropTypes.string,
 };
-
 ConfirmEmailField.defaultProps = {
   errorMessage: '',
 };
-
 export default ConfirmEmailField;
