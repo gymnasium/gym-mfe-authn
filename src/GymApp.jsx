@@ -35,9 +35,6 @@ registerIcons();
 
 const GymApp = () => (
   <AppProvider store={configureStore()}>
-    <Helmet>
-      <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
-    </Helmet>
     <GymHeader />
     <main>
     <div className="container">
